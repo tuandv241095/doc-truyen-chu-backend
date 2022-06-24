@@ -7,12 +7,16 @@ import { StoriesModule } from './stories/stories.module';
 import { CommentsModule } from './comments/comments.module';
 import { ChaptersModule } from './chapters/chapters.module';
 import { AuthorsModule } from './authors/authors.module';
-import { TagsModule } from './tags/tags.module';
 import { CategoriesModule } from './categories/categories.module';
-import { RatesModule } from './rates/rates.module';
-import { ReadingModule } from './reading/reading.module';
-import { MarkingModule } from './marking/marking.module';
 import { CountersModule } from './counters/counters.module';
+import { ConverterModule } from './converter/converter.module';
+import { WorldViewModule } from './worldView/worldView.module';
+import { PersonalityModule } from './personality/personality.module';
+import { SexModule } from './sex/sex.module';
+import { StoryStatusModule } from './story-status/story-status.module';
+import { ReviewsModule } from './reviews/reviews.module';
+import { StyleModule } from './style/style.module';
+import { DatabaseFileModule } from './databaseFile/databaseFile.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -34,12 +38,16 @@ import * as Joi from '@hapi/joi';
     CommentsModule,
     ChaptersModule,
     AuthorsModule,
-    TagsModule,
     CategoriesModule,
-    RatesModule,
-    ReadingModule,
-    MarkingModule,
     CountersModule,
+    ConverterModule,
+    WorldViewModule,
+    PersonalityModule,
+    SexModule,
+    StoryStatusModule,
+    ReviewsModule,
+    StyleModule,
+    DatabaseFileModule,
   ],
   controllers: [],
   providers: [],

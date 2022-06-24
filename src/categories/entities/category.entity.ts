@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Story } from 'src/stories/entities/story.entity';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Category {
@@ -10,4 +11,13 @@ export class Category {
 
   @Column()
   description: string;
+
+  @Column()
+  slug: string;
+
+  @ManyToMany(
+    () => Story,
+    (story: Story) => story.categories,
+  )
+  stories: Story[];
 }

@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Story } from 'src/stories/entities/story.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  RelationId,
+} from 'typeorm';
 
 @Entity()
 export class Chapter {
@@ -17,6 +24,12 @@ export class Chapter {
   @Column()
   views: number;
 
-  @Column()
+  @RelationId((chapter: Chapter) => chapter.story)
   storyId: string;
+
+  @ManyToOne(
+    () => Story,
+    (story: Story) => story.chapters,
+  )
+  story: Story;
 }

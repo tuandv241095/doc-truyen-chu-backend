@@ -28,7 +28,7 @@ export class AuthenticationService {
     } catch (error) {
       if (error?.code === PostgresErrorCode.UniqueViolation) {
         throw new HttpException(
-          'User with that email already exists',
+          'User with this email/name already exists',
           HttpStatus.BAD_REQUEST,
         );
       }
@@ -51,6 +51,12 @@ export class AuthenticationService {
       ...token,
       ...refreshToken,
     };
+  }
+
+  async refresh(userId: string) {
+    const user = await this.usersService.getById(userId);
+    const token = await this._createToken(user.id);
+    return token;
   }
 
   public async getAuthenticatedUser(email: string, plainTextPassword: string) {

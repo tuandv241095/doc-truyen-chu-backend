@@ -18,12 +18,17 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node node_modules/typeorm/cli.js  -f ormconfig",
+    "migration:generate": "yarn run typeorm migration:generate -d src/migrations -n",
+    "migration:create": "yarn run typeorm migration:create -d src/migrations -n",
+    "migration:revert": "yarn run typeorm migration:revert",
+    "migration:run": "yarn run typeorm migration:run"
   },
   "dependencies": {
     "@casl/ability": "^5.4.3",
     "@hapi/joi": "^17.1.1",
-    "@nestjs/common": "^7.0.0",
+    "@nestjs/common": "^8.4.7",
     "@nestjs/config": "^1.1.5",
     "@nestjs/core": "^7.0.0",
     "@nestjs/jwt": "^8.0.0",
@@ -33,6 +38,7 @@
     "@nestjs/typeorm": "^8.0.2",
     "@types/bcryptjs": "^2.4.2",
     "@types/hapi__joi": "^17.1.7",
+    "@types/multer": "^1.4.7",
     "@types/passport-facebook": "^2.1.11",
     "@types/passport-github2": "^1.2.5",
     "@types/passport-google-oauth20": "^2.0.11",
@@ -81,7 +87,8 @@
     "moduleFileExtensions": [
       "js",
       "json",
-      "ts"
+      "ts",
+      "jpg"
     ],
     "rootDir": "src",
     "testRegex": ".spec.ts$",

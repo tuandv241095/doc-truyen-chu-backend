@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Tiên Hiệp",
+    "slug": "tien-hiep",
+    "description": "Tiên Hiệp, là thế giới tưởng tượng của tác giả, các nhân vật tu luyện những công pháp, sử dụng linh khí, pháp bảo, dùng những lực lượng như: linh lực, tiên lực, thần lực, ở Dị giới thì tu luyện ma pháp.\\nTiên hiệp là những tiểu thuyết lấy bối cảnh chính ở thời cổ đại, nội dung truyện thường miêu tả con đường cầu tiên tu đạo, đấu tranh sinh tồn trong thế giới tu tiên của nhân vật chính.\\nNhững bộ truyện đặc trưng: Độc tôn tam giới, Nhất niệm vĩnh hằng, đấu phá thương khung, tiên nghịch, cầu ma, thiếu gia bị bỏ rơi, điên cuồng hệ thống tăng cấp, đạo quân, ngạo thế đan thần, đế bá, vô địch thiên hạ, ngã dục phong thiên, vô địch kiếm vực, vạn cổ thần đế, Linh Vũ Thiên hạ,  Phí thiên đao, tối cường thần thoại đế hoàng, vô tận đan điền, phàm nhân tu tiên, vũ động càn khôn, ma đạo tổ sư, tạo hoá tiên đế, thần khống thiên hạ, trọng sinh tu tiên tại đô thị, đấu la đại lục, đế tôn, ngạo thế cửu trọng thiên, mãng hoang kỷ, kiếm đạo độc tôn, huyền giới chi môn, bổ thiên ký, chân linh cửu biến, mị ảnh, già thiên, Kiếm động cửu thiên, ma thiên ký, tinh thần biến, tu chân giả tại dị giới, dược thần, sát thần, tru tiên, đan vũ càn khôn, tạo hoá chi môn, bàn long, tu chân thế giới, duy ngã độc tôn, khí trùng tinh hà, thương thiên, tướng dạ, cửu đỉnh ký, đại ma vương…"
+  },
+  {
+    "name": "Huyền Huyễn",
+    "slug": "huyen-huyen",
+    "description": "Huyền huyễn là một trong ba bối cảnh truyện thường xuất hiện trong sáng tác của các tác giả. Thể loại Huyền Huyễn (còn được gọi là Huyền Ảo) là những truyện có rất nhiều yếu tố kỳ ảo, phép thuật. Nhân vật thường là tiên, bán tiên hoặc các vị thần, được đặt trong bối cảnh không gian siêu tưởng như tiên giới, ma giới… Nội dung chính chủ yếu xoay quanh về việc tu luyện pháp khí, ma pháp, tu đạo, pháp bảo, tu tiên….\\nNhững bộ truyện đặc trưng: Thần mộ, thần mộ 2, Đấu la đại lục, mị ảnh, đấu phá thương khung, ác ma pháp tắc, vũ động càn khôn, tiên ma biến, thôn phệ tinh không, dị thế tà quân…"
+  },
+  {
+    "name": "Kiếm hiệp",
+    "slug": "kiem-hiep",
+    "description": "Kiếm Hiệp là những truyện có bối cảnh cổ trang, nhân vật chính là người trong các môn phái võ lâm, tu luyện võ công tâm pháp. Thông thường kết thúc truyện, võ công của nhân vật chính sẽ đạt đến mức thượng thừa, thống nhất hoặc quy ẩn giang hồ.\\nNhững bộ truyện đặc trưng: Côn luân, hiệp hành thiên hạ, đại đường song long truyện, long cà diễn nghĩa, huyết hải phiêu hương, thương hải, tranh bá thiên hạ, thư kiếm trường an, yến thập tam, bạch y phương chấn my, biên thành lãng tử."
+  },
+  {
+    "name": "Lịch Sử",
+    "slug": "lich-su",
+    "description": "Thường có bối cảnh vào các thời đại phong kiến, nhân vật chính sẽ sống lại hoặc xuyên không đến những triều đại ấy và thay đổi lịch sử."
+  },
+  {
+    "name": "Ngôn Tình",
+    "slug": "tien-hiep",
+    "description": "Ngôn Tình là tiểu thuyết viết về tình yêu giữa các đôi nam nữ, có thể là những câu chuyện tình cảm ngọt ngào lãng mạn, cũng có thể là những mối tình ngược tâm ngược thân lâm li bi đát. Bối cảnh của truyện ngôn tình khá phong phú như: cổ trang, hiện đại, võng phối, mạt thế, xuyên không,…"
+  },
+  {
+    "name": "Dị Giới",
+    "slug": "di-gioi",
+    "description": "Là những truyện mà nhân vật chính sẽ xuyên không đến một không gian hoặc một thế giới có nền văn minh hoàn toàn khác Trái Đất. (Tiêu biểu là “Mất mát đại lục”)"
+  },
+  {
+    "name": "Đô Thị",
+    "slug": "do-thi",
+    "description": "những truyện lấy bối cảnh ở thời hiện đại, chủ yếu viết về cuộc sống sinh hoạt thường ngày ở thành phố, nông thôn, miền núi, vùng biển… xung quanh chúng ta."
+  },
+  {
+    "name": "Trinh Thám",
+    "slug": "trinh-tham",
+    "description": "Lấy đề tài về những màn điều tra, đấu trí cân não, giải quyết những vụ án khó khăn hóc búa….của nhân vật chính."
+  },
+  {
+    "name": "Cổ Đại",
+    "slug": "co-dai",
+    "description": "Truyện lấy bối cảnh ở các thế giới khác hoặc trong lịch sử nơi các triều đại phong kiến tồn tại."
+  },
+  {
+    "name": "Hệ Thống",
+    "slug": "he-thong",
+    "description": "Nội dung phần lớn tập trung vào việc nhân vật chính bị thế lực thần bí (tác giả) tích hợp một cái hệ thống như trong game vào người. Mỗi khi hoàn thành nhiệm vụ hay giết người/quái….sẽ được tăng năng lực hay mua thần khí… "
+  },
+  {
+    "name": "Khoa Huyễn",
+    "slug": "khoa-huyen",
+    "description": "Là thể loại truyện có nội dung về khoa học viễn tưởng."
+  },
+  {
+    "name": "Quân sự",
+    "slug": "quan-su",
+    "description": "Những truyện liên quan đến đề tài về quân đội như cuộc sống sinh hoạt, chiến tranh, khai mở lãnh thổ…tranh đoạt thiên hạ, các quốc gia giao chiến với nhau. Và đương nhiên kết thúc sẽ là việc nhân vật chính giành được thiên hạ, có giang sơn mà cũng có mỹ nhân."
+  },
+  {
+    "name": "Võng Du",
+    "slug": "vong-du",
+    "description": "Loại truyện chuyên viết về game, nhân vật chính gặp nhau trong game, có thể là nhất kiến chung tình, lâu ngày sinh tình, hoặc hoan hỉ oan gia…Võng Du chủ yếu có hai loại: một là chỉ tập trung viết về đề tài game trong suốt bộ truyện (Tiêu biểu là “Công tử Liên Thành”), hai là sẽ đan xen giữa thực tại và thế giới ảo (Tiêu biểu là “Anh sẽ yêu em từ cái nhìn đầu tiên”)."
+  },
+  {
+    "name": "Xuyên Không",
+    "slug": "xuyen-khong",
+    "description": "Là cụm từ viết tắt của “xuyên qua thời không” hoặc “xuyên việt giá không”, là loại truyện mà nhân vật chính đang ở thời hiện đại bỗng gặp phải bất trắc chẳng hạn như bệnh tật, tai nạn… và bị một thế lực bí ẩn nào đó khiến bản thân xuyên qua thế giới khác."
+  },
+  {
+    "name": "Huyền Bí",
+    "slug": "huyen-bi",
+    "description": "Nội dung thường tập trung vào những đối tượng siêu nhiên hoặc hiện tượng siêu hình (phi vật thể), ngoài tầm giải thích của con người hiện nay mà mới chỉ được giả thuyết chưa rõ ràng theo một số cách khác nhau."
+  },
+  {
+    "name": "Kỳ Huyễn",
+    "slug": "ky-huyen",
+    "description": "Nội dung chủ yếu tập trung vào những điều kỳ bí trong hiện thực, cốt truyện khai thác những sự kiện kỳ bí đó để tạo thành một thế giới huyền ảo rộng lớn."
+  },
+  {
+    "name": "Linh Dị",
+    "slug": "linh-di",
+    "description": "Nội dung chủ yếu tập trung vào đề tài kinh dị, thần bí, ma quỷ…Nhân vật chính có thể có những khả năng đặc biệt."
+  },
+  {
+    "name": "Ma Pháp",
+    "slug": "ma-phap",
+    "description": "Nội dung tương tự với thể loại Huyền Huyễn và Huyền Ảo nhưng chủ yếu tập trung vào các loại pháp thuật, ma pháp phương Tây."
+  },
+  {
+    "name": "Mạt Thế",
+    "slug": "mat-the",
+    "description": "Lấy bối cảnh diễn ra ở thời đại tận thế. Bởi vì chiến tranh hoặc khoa học kỹ thuật mất kiểm soát, hay vì lý do nào đó ngoài ý muốn mà xảy ra tai nạn (phát tán virus, bùng nổ dịch bệnh…) làm xuất hiện tang thi (zombie) hoặc động vật/thực vật biến dị… tấn công con người."
+  },
+  {
+    "name": "Quan Trường",
+    "slug": "quan-trương",
+    "description": "Cốt truyện chủ yếu tập trung vào những việc tranh đấu quyền lực trong chốn quan trường ở bối cảnh cổ đại hoặc hiện đại."
+  }
+]

@@ -10,7 +10,10 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { CreateUserWithSSODto } from 'src/users/dto/create-user.dto';
+import { User } from 'src/users/entities/user.entity';
 import { AuthenticationService } from './authentication.service';
+import { AuthRefresh } from './decorators/auth-refresh.decorator';
+import { UserDeco } from './decorators/user.decorator';
 import { RegisterDto } from './dto/register.dto';
 import { TokenVerificationDto } from './dto/tokenVerification.dto';
 import { FacebookService } from './facebook/facebook.service';
@@ -32,12 +35,18 @@ export class AuthenticationController {
     return user;
   }
 
+  @AuthRefresh()
+  @Get('refresh')
+  async refresh(@UserDeco() user: User) {
+    return await this.authenticationService.refresh(user.id);
+  }
+
   @HttpCode(200)
   @UseGuards(LocalAuthenticationGuard)
-  @Post('logIn')
+  @Post('login')
   async logIn(@Req() request: RequestWithUser) {
     const { user } = request;
-    const loginRes = this.authenticationService.logIn(user.id);
+    const loginRes = await this.authenticationService.logIn(user.id);
 
     return {
       user,

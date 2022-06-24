@@ -1,5 +1,12 @@
 import { Exclude } from 'class-transformer';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { DatabaseFile } from 'src/databaseFile/entities/databaseFile.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { RegisteredType } from './registeredType.enum';
 import { Role } from './role.enum';
 
@@ -34,7 +41,7 @@ export class User {
   @Column({
     nullable: true,
     default:
-      'https://thumbs.dreamstime.com/z/default-avatar-profile-icon-vector-unknown-social-media-user-photo-default-avatar-profile-icon-vector-unknown-social-media-user-184816085.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png',
   })
   photo: string;
 

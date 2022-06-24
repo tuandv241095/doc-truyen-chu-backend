@@ -6,12 +6,14 @@ import { User } from './entities/user.entity';
 import { UserRepository } from './repositories/user.repository';
 import { In } from 'typeorm';
 import { RegisteredType } from './entities/registeredType.enum';
+import { DatabaseFileService } from 'src/databaseFile/databaseFile.service';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private userRepository: UserRepository,
+    private databaseFileService: DatabaseFileService,
   ) {}
 
   async getByEmail(usernameOrEmail: string) {
