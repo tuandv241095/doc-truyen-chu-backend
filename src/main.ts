@@ -12,18 +12,22 @@ import path, { join } from 'path';
 import { converterSeeding } from './database/seedingData/converters/converters.seeding.db';
 import { authorSeeding } from './database/seedingData/authors/authors.seeding.db';
 import { storiesSeeding } from './database/seedingData/stories/stories.seeding.db';
+import { usersSeeding } from './database/seedingData/users/users.seeding.db';
+import { imagesSeeding } from './database/seedingData/images/images.seeding.db';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.enableCors();
   app.useStaticAssets(path.join(__dirname, '/../src/database/images'));
+  await imagesSeeding();
+  await userSeeding();
+  await usersSeeding();
   await categorySeeding();
   await storyStatusSeeding();
   await sexSeeding();
   await personalitySeeding();
   await styleSeeding();
   await worldViewSeeding();
-  await userSeeding();
   await converterSeeding();
   await authorSeeding();
   await storiesSeeding();

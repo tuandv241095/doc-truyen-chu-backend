@@ -1,23 +1,26 @@
 import { Story } from 'src/stories/entities/story.entity';
-import { CommentBody } from '../../../dist/comments/entities/commentBody';
-import { Feedback } from '../../../dist/comments/entities/feedback.interface';
 import { User } from '../../users/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   RelationId,
 } from 'typeorm';
+import { CommentBody } from './commentBody.interface';
+import { Feedback } from './feedback.interface';
+import { React } from 'src/react/entities/react.entity';
 
 @Entity()
 export class Comment {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column({type:"int",default: 1})
+  @Column({ type: 'int', default: 1 })
   level: number;
 
   @CreateDateColumn()
@@ -34,6 +37,7 @@ export class Comment {
   feedback: Feedback;
 
   @RelationId((comment: Comment) => comment.story)
+  @Column({ nullable: true })
   storyId: string;
 
   @ManyToOne(
@@ -43,6 +47,7 @@ export class Comment {
   story: Story;
 
   @RelationId((comment: Comment) => comment.user)
+  @Column({ nullable: true })
   userId: string;
 
   @ManyToOne(
@@ -51,9 +56,25 @@ export class Comment {
   )
   user: User;
 
-  @ManyToOne(() => Comment, comment => comment.subcomments)
+  @RelationId((comment: Comment) => comment.parentComment)
+  @Column({ nullable: true })
+  parentCommentId: string;
+
+  @ManyToOne(
+    () => Comment,
+    comment => comment.subcomments,
+  )
   parentComment: Comment;
 
-  @OneToMany(() => Comment, comment => comment.parentComment)
+  @OneToMany(
+    () => Comment,
+    comment => comment.parentComment,
+  )
   subcomments: Comment[];
+
+  @OneToMany(
+    () => React,
+    react => react.comment,
+  )
+  reacts: React[];
 }

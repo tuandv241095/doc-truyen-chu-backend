@@ -1,4 +1,5 @@
 import { Author } from 'src/authors/entities/author.entity';
+import { BookMark } from 'src/bookMark/entities/bookMark.entity';
 import { Category } from 'src/categories/entities/category.entity';
 import { Chapter } from 'src/chapters/entities/chapter.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
@@ -8,6 +9,7 @@ import { Review } from 'src/reviews/entities/review.entity';
 import { Sex } from 'src/sex/entities/sex.entity';
 import { StoryStatus } from 'src/story-status/entities/story-status.entity';
 import { Style } from 'src/style/entities/style.entity';
+import { VoteUp } from 'src/voteUp/entities/voteUp.entity';
 import { WorldView } from 'src/worldView/entities/worldView.entity';
 import {
   Column,
@@ -45,6 +47,7 @@ export class Story {
   converter: Converter;
 
   @RelationId((story: Story) => story.converter)
+  @Column({ nullable: true })
   converterId: string;
 
   @ManyToOne(
@@ -54,12 +57,19 @@ export class Story {
   author: Author;
 
   @RelationId((story: Story) => story.author)
+  @Column({ nullable: true })
   authorId: string;
 
   @Column({
     type: 'jsonb',
   })
   counters: Counters;
+
+  @OneToMany(
+    () => BookMark,
+    (bookMark: BookMark) => bookMark.story,
+  )
+  bookMarks: BookMark[];
 
   @ManyToMany(
     () => Category,
@@ -144,4 +154,10 @@ export class Story {
 
   @RelationId((story: Story) => story.reviews)
   reviewIds: string[];
+
+  @OneToMany(
+    () => VoteUp,
+    (voteUp: VoteUp) => voteUp.story,
+  )
+  voteUps: VoteUp[];
 }

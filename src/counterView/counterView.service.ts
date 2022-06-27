@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCounterDto } from './dto/create-counter.dto';
-import { UpdateCounterDto } from './dto/update-counter.dto';
+import { CreateCounterViewDto } from './dto/createCounterView.dto';
+import { UpdateCounterViewDto } from './dto/updateCounterView.dto';
 
 @Injectable()
-export class CountersService {
-  create(createCounterDto: CreateCounterDto) {
+export class CounterViewService {
+  create(createCounterDto: CreateCounterViewDto) {
     return 'This action adds a new counter';
   }
 
@@ -16,7 +16,7 @@ export class CountersService {
     return `This action returns a #${id} counter`;
   }
 
-  update(id: number, updateCounterDto: UpdateCounterDto) {
+  update(id: number, updateCounterDto: UpdateCounterViewDto) {
     return `This action updates a #${id} counter`;
   }
 

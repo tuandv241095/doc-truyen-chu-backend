@@ -1,8 +1,10 @@
+import { CounterView } from 'src/counterView/entities/counterView.entity';
 import { Story } from 'src/stories/entities/story.entity';
 import {
   Column,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   RelationId,
 } from 'typeorm';
@@ -22,9 +24,13 @@ export class Chapter {
   content: string;
 
   @Column()
+  countText: number;
+
+  @Column({ default: 0 })
   views: number;
 
   @RelationId((chapter: Chapter) => chapter.story)
+  @Column({ nullable: true })
   storyId: string;
 
   @ManyToOne(
@@ -32,4 +38,10 @@ export class Chapter {
     (story: Story) => story.chapters,
   )
   story: Story;
+
+  @OneToMany(
+    () => CounterView,
+    (counterView: CounterView) => counterView.chapter,
+  )
+  counterViews: CounterView[];
 }

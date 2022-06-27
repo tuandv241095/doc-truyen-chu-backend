@@ -8,7 +8,7 @@ import { CommentsModule } from './comments/comments.module';
 import { ChaptersModule } from './chapters/chapters.module';
 import { AuthorsModule } from './authors/authors.module';
 import { CategoriesModule } from './categories/categories.module';
-import { CountersModule } from './counters/counters.module';
+import { CountersModule } from './counterView/counterView.module';
 import { ConverterModule } from './converter/converter.module';
 import { WorldViewModule } from './worldView/worldView.module';
 import { PersonalityModule } from './personality/personality.module';
@@ -17,6 +17,9 @@ import { StoryStatusModule } from './story-status/story-status.module';
 import { ReviewsModule } from './reviews/reviews.module';
 import { StyleModule } from './style/style.module';
 import { DatabaseFileModule } from './databaseFile/databaseFile.module';
+import { BookMarkModule } from './bookMark/bookMark.module';
+import { ReactModule } from './react/react.module';
+import { VoteUpModule } from './voteUp/voteUp.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -48,6 +51,9 @@ import * as Joi from '@hapi/joi';
     ReviewsModule,
     StyleModule,
     DatabaseFileModule,
+    BookMarkModule,
+    ReactModule,
+    VoteUpModule,
   ],
   controllers: [],
   providers: [],

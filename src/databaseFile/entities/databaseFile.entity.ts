@@ -8,8 +8,9 @@ export class DatabaseFile {
   @Column()
   fileName: string;
 
-  @Column({
-    type: 'bytea',
-  })
-  data: Uint8Array;
+  @Column()
+  type: string;
+
+  @Column()
+  base64: string;
 }

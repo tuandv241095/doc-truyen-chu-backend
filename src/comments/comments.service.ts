@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { getRepository } from 'typeorm';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
+import { Comment } from './entities/comment.entity';
 
 @Injectable()
 export class CommentsService {
@@ -8,8 +10,11 @@ export class CommentsService {
     return 'This action adds a new comment';
   }
 
-  findAll() {
-    return `This action returns all comments`;
+  async findAll() {
+    return await getRepository(Comment).find({
+      where: { storyId: '6' },
+      relations: ['user'],
+    });
   }
 
   findOne(id: number) {

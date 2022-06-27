@@ -12,7 +12,10 @@ import { RegisteredType } from './registeredType.enum';
 import { Role } from './role.enum';
 import { Review } from '../../reviews/entities/review.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
-import { Counter } from 'src/counters/entities/counter.entity';
+import { BookMark } from 'src/bookMark/entities/bookMark.entity';
+import { React } from 'src/react/entities/react.entity';
+import { CounterView } from 'src/counterView/entities/counterView.entity';
+import { VoteUp } from 'src/voteUp/entities/voteUp.entity';
 
 @Entity()
 export class User {
@@ -58,6 +61,12 @@ export class User {
   roles: Role[];
 
   @OneToMany(
+    () => BookMark,
+    (bookMark: BookMark) => bookMark.user,
+  )
+  bookMarks: BookMark[];
+
+  @OneToMany(
     () => Review,
     (review: Review) => review.user,
   )
@@ -70,13 +79,25 @@ export class User {
   comments: Comment[];
 
   @OneToMany(
-    () => Counter,
-    (counter: Counter) => counter.user,
+    () => CounterView,
+    (counterView: CounterView) => counterView.user,
   )
-  counters: Counter[];
+  counterViews: CounterView[];
 
   @Column({
-    default: 0
+    default: 0,
   })
-  totalCounter: number
+  totalCounter: number;
+
+  @OneToMany(
+    () => React,
+    react => react.user,
+  )
+  reacts: React[];
+
+  @OneToMany(
+    () => VoteUp,
+    voteUp => voteUp.user,
+  )
+  voteUps: VoteUp[];
 }

@@ -142,7 +142,7 @@ export const randomText = (p: number, c: number, upper: boolean) => {
   for (let i = 0; i < p; i++) {
     let x;
     if (i == p - 1) x = total;
-    else x = randomInterval(10, total - 10);
+    else x = randomInterval(8, total - 8);
     total -= x;
     const aa = textData.sort(() => Math.random() - Math.random()).slice(0, x);
     let subtext = '';
@@ -160,11 +160,11 @@ export const randomText = (p: number, c: number, upper: boolean) => {
   return text;
 };
 
-export const getMultipleRandom = (arr:Array<string>, num:number) => {
+export const getMultipleRandom = (arr: Array<string>, num: number) => {
   const shuffled = [...arr].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, num);
-}
+};
 
-export const getOneRandom = (arr:Array<string>) => {
-  return arr[Math.floor(Math.random()*arr.length)];
-}
+export const getOneRandom = (arr: Array<string>) => {
+  return arr[Math.floor(Math.random() * arr.length)];
+};

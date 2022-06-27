@@ -5,14 +5,17 @@ import { join } from 'path';
 import { randomInterval, randomText } from '../RandomText';
 
 export async function converterSeeding() {
-  for (let i = 1; i <= 600; i++) {
+  for (let i = 1; i <= 10; i++) {
     if (
       !(await getRepository(Converter).findOne({
         where: { id: i },
       }))
     ) {
       const img = fs.readFileSync(
-        join(process.cwd(), 'src/database/images/1.jpg'),
+        join(
+          process.cwd(),
+          'src/database/images/' + randomInterval(1, 60).toString() + '.jpg',
+        ),
       );
       const base64 = img.toString('base64');
       const converter = {
@@ -22,6 +25,6 @@ export async function converterSeeding() {
       };
       const converterEntity = getRepository(Converter).create(converter);
       await getRepository(Converter).save(converterEntity);
-    }else break;
+    } else break;
   }
 }
