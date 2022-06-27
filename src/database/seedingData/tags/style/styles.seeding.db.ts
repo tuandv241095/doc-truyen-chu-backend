@@ -11,6 +11,6 @@ export async function styleSeeding() {
     ) {
       const styleEntity = getRepository(Style).create(style);
       await getRepository(Style).save(styleEntity);
-    }
+    }else break;
   }
 }

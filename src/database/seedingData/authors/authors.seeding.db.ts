@@ -17,6 +17,6 @@ export async function authorSeeding() {
     ) {
       const authorEntity = getRepository(Author).create(author);
       await getRepository(Author).save(authorEntity);
-    }
+    }else break;
   }
 }

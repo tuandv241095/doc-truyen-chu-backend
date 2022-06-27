@@ -11,6 +11,6 @@ export async function sexSeeding() {
     ) {
       const sexEntity = getRepository(Sex).create(sex);
       await getRepository(Sex).save(sexEntity);
-    }
+    }else break;
   }
 }

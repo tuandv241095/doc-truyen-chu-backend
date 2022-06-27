@@ -11,6 +11,6 @@ export async function categorySeeding() {
     ) {
       const categoryEntity = getRepository(Category).create(category);
       await getRepository(Category).save(categoryEntity);
-    }
+    }else break;
   }
 }

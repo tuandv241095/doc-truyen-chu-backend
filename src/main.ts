@@ -11,6 +11,7 @@ import { userSeeding } from './database/seedingData/users/user.seeding.db';
 import path, { join } from 'path';
 import { converterSeeding } from './database/seedingData/converters/converters.seeding.db';
 import { authorSeeding } from './database/seedingData/authors/authors.seeding.db';
+import { storiesSeeding } from './database/seedingData/stories/stories.seeding.db';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -25,6 +26,7 @@ async function bootstrap() {
   await userSeeding();
   await converterSeeding();
   await authorSeeding();
+  await storiesSeeding();
   await app.listen(5000);
 }
 bootstrap();

@@ -11,6 +11,6 @@ export async function storyStatusSeeding() {
     ) {
       const storyStatusEntity = getRepository(StoryStatus).create(storyStatus);
       await getRepository(StoryStatus).save(storyStatusEntity);
-    }
+    }else break;
   }
 }

@@ -11,6 +11,6 @@ export async function personalitySeeding() {
     ) {
       const personalityEntity = getRepository(Personality).create(personality);
       await getRepository(Personality).save(personalityEntity);
-    }
+    }else break;
   }
 }

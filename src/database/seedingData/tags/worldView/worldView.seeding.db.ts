@@ -11,6 +11,6 @@ export async function worldViewSeeding() {
     ) {
       const worldViewEntity = getRepository(WorldView).create(worldView);
       await getRepository(WorldView).save(worldViewEntity);
-    }
+    }else break;
   }
 }

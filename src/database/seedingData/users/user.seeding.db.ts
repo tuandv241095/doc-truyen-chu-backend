@@ -25,6 +25,6 @@ export async function userSeeding() {
         photo: 'data:image/jpeg;base64,' + base64,
       });
       await getRepository(User).save(userEntity);
-    }
+    }else break;
   }
 }

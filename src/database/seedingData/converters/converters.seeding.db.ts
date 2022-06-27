@@ -22,6 +22,6 @@ export async function converterSeeding() {
       };
       const converterEntity = getRepository(Converter).create(converter);
       await getRepository(Converter).save(converterEntity);
-    }
+    }else break;
   }
 }
