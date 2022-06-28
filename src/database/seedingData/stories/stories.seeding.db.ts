@@ -77,16 +77,15 @@ export async function storiesSeeding() {
           descriptionLength * randomInterval(20, 35),
           false,
         ),
-        counters: {
-          countBookMark: 0,
-          countChapter: 0,
-          countComment: 0,
-          countReview: 0,
-          countText: 0,
-          countView: 0,
-          countVoteUp: 0,
-          starRate: 0,
-        },
+        countBookMark: 0,
+        countChapter: 0,
+        countComment: 0,
+        countReview: 0,
+        countText: 0,
+        countView: 0,
+        countReading: 0,
+        countVoteUp: 0,
+        starRate: 0,
         poster: {
           poster150: img,
           poster300: img,
@@ -138,7 +137,7 @@ export async function storiesSeeding() {
         Math.floor((weight * userCount) / 4),
       );
       let countText = 0;
-      let countView = 0;
+      const countView = 0;
       let countVoteUp = 0;
       let totalStar = 0;
       let starRate = 0;
@@ -179,17 +178,15 @@ export async function storiesSeeding() {
         countVoteUp += count;
       }
       await getRepository(Story).update(res.id, {
-        counters: {
-          countBookMark: countBookMark,
-          countReading: countReading,
-          countChapter: countChapter,
-          countComment: countComment,
-          countReview: countReview,
-          countText: countText,
-          countView: countView,
-          countVoteUp: countVoteUp,
-          starRate: starRate,
-        },
+        countBookMark: countBookMark,
+        countReading: countReading,
+        countChapter: countChapter,
+        countComment: countComment,
+        countReview: countReview,
+        countText: countText,
+        countView: countView,
+        countVoteUp: countVoteUp,
+        starRate: starRate,
       });
     } else break;
   }

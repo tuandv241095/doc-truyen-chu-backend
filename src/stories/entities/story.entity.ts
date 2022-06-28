@@ -61,10 +61,28 @@ export class Story {
   @Column({ nullable: true })
   authorId: string;
 
-  @Column({
-    type: 'jsonb',
-  })
-  counters: Counters;
+  // @Column({
+  //   type: 'jsonb',
+  // })
+  // counters: Counters;
+  @Column({type: "float"})
+  starRate: number;
+  @Column()
+  countChapter: number;
+  @Column()
+  countView: number;
+  @Column()
+  countText: number;
+  @Column()
+  countBookMark: number;
+  @Column()
+  countReading: number;
+  @Column()
+  countVoteUp: number;
+  @Column()
+  countReview: number;
+  @Column()
+  countComment: number;
 
   @OneToMany(
     () => BookMark,
