@@ -1,13 +1,6 @@
 import { Exclude } from 'class-transformer';
 import { DatabaseFile } from 'src/databaseFile/entities/databaseFile.entity';
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { RegisteredType } from './registeredType.enum';
 import { Role } from './role.enum';
 import { Review } from '../../reviews/entities/review.entity';
@@ -16,6 +9,7 @@ import { BookMark } from 'src/bookMark/entities/bookMark.entity';
 import { React } from 'src/react/entities/react.entity';
 import { CounterView } from 'src/counterView/entities/counterView.entity';
 import { VoteUp } from 'src/voteUp/entities/voteUp.entity';
+import { Reading } from 'src/reading/entities/reading.entity';
 
 @Entity()
 export class User {
@@ -65,6 +59,12 @@ export class User {
     (bookMark: BookMark) => bookMark.user,
   )
   bookMarks: BookMark[];
+
+  @OneToMany(
+    () => Reading,
+    (reading: Reading) => reading.user,
+  )
+  readings: Reading[];
 
   @OneToMany(
     () => Review,

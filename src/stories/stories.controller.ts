@@ -1,7 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { StoriesService } from './stories.service';
 import { CreateStoryDto } from './dto/create-story.dto';
 import { UpdateStoryDto } from './dto/update-story.dto';
+import { StoryQuery } from './dto/storyQuery';
 
 @Controller('stories')
 export class StoriesController {
@@ -13,22 +23,23 @@ export class StoriesController {
   }
 
   @Get()
-  findAll() {
-    return this.storiesService.findAll();
+  findAll(@Query() q: StoryQuery) {
+    return this.storiesService.findAll(
+      q.offset,
+      q.limit,
+      q.sortBy,
+      q.keyword,
+      q.categories,
+      q.status,
+      q.worldViews,
+      q.personalities,
+      q.sex,
+      q.style,
+    );
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.storiesService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateStoryDto: UpdateStoryDto) {
-    return this.storiesService.update(+id, updateStoryDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.storiesService.remove(+id);
   }
 }

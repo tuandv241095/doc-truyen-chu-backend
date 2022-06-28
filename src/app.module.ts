@@ -20,6 +20,7 @@ import { DatabaseFileModule } from './databaseFile/databaseFile.module';
 import { BookMarkModule } from './bookMark/bookMark.module';
 import { ReactModule } from './react/react.module';
 import { VoteUpModule } from './voteUp/voteUp.module';
+import { ReadingModule } from './reading/reading.module';
 import * as Joi from '@hapi/joi';
 
 @Module({
@@ -54,6 +55,7 @@ import * as Joi from '@hapi/joi';
     BookMarkModule,
     ReactModule,
     VoteUpModule,
+    ReadingModule,
   ],
   controllers: [],
   providers: [],

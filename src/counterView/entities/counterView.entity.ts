@@ -14,7 +14,7 @@ export class CounterView {
   id: string;
 
   @CreateDateColumn()
-  createAt: Date;
+  createdAt: Date;
 
   @Column()
   chapterId: string;

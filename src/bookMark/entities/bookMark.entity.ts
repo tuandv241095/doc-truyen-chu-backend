@@ -15,7 +15,7 @@ export class BookMark {
   id: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @RelationId((bookMark: BookMark) => bookMark.story)
   @Column({ nullable: true })

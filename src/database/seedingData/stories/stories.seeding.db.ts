@@ -22,6 +22,7 @@ import { createReview } from './createReview';
 import { createBookMark } from './createBookMark';
 import { createChapter } from './createChapter';
 import { createVoteUp } from './createVoteUp';
+import { createReading } from './createReading';
 
 export async function storiesSeeding() {
   const categoryList = (await getRepository(Category).find()).map(i =>
@@ -49,7 +50,7 @@ export async function storiesSeeding() {
   const userList = (await getRepository(User).find()).map(i => i.id.toString());
   const userCount = userList.length / 10;
 
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 50; i++) {
     if (
       !(await getRepository(Story).findOne({
         where: { id: i },
@@ -67,10 +68,15 @@ export async function storiesSeeding() {
             ),
           )
           .toString('base64');
+      const descriptionLength = randomInterval(2, 10);
 
       const story = {
         name: randomText(1, randomInterval(2, 6), true),
-        description: randomText(1, randomInterval(15, 25), false),
+        description: randomText(
+          descriptionLength,
+          descriptionLength * randomInterval(20, 35),
+          false,
+        ),
         counters: {
           countBookMark: 0,
           countChapter: 0,
@@ -113,19 +119,23 @@ export async function storiesSeeding() {
       };
       const storyEntity = getRepository(Story).create(story);
       const res = await getRepository(Story).save(storyEntity);
-      const weight = randomInterval(1, 10);
+      const weight = randomInterval(2, 5);
       const countBookMark = randomInterval(
         (weight - 1) * userCount,
         weight * userCount,
       );
-      const countChapter = randomInterval((weight - 1) * 20 + 1, weight * 20);
-      const countComment = randomInterval(
-        Math.floor((countChapter * weight) / 10),
-        Math.floor((countChapter * weight) / 2),
-      );
-      const countReview = randomInterval(
+      const countReading = randomInterval(
         (weight - 1) * userCount,
         weight * userCount,
+      );
+      const countChapter = randomInterval((weight - 1) * 10 + 1, weight * 10);
+      const countComment = randomInterval(
+        Math.floor((countChapter * weight) / 10),
+        Math.floor((countChapter * weight) / 5),
+      );
+      const countReview = randomInterval(
+        Math.floor(((weight - 1) * userCount) / 4),
+        Math.floor((weight * userCount) / 4),
       );
       let countText = 0;
       let countView = 0;
@@ -135,13 +145,16 @@ export async function storiesSeeding() {
       for (const userId of getMultipleRandom(userList, countBookMark)) {
         await createBookMark(res.id, userId);
       }
+      for (const userId of getMultipleRandom(userList, countReading)) {
+        await createReading(res.id, userId, randomInterval(1, countChapter));
+      }
       for (let i = 1; i <= countChapter; i++) {
         const chapter = await createChapter(i, res.id);
         if (chapter) countText += chapter.countText;
       }
 
       for (let i = 0; i < countComment; i++) {
-        await createComment(null, getOneRandom(userList), res.id, 1);
+        await createComment(null, getOneRandom(userList), res.id, 1, weight);
       }
       for (let i = 0; i < countReview; i++) {
         const review = await createReview(
@@ -149,6 +162,7 @@ export async function storiesSeeding() {
           getOneRandom(userList),
           res.id,
           1,
+          weight,
         );
         if (review) totalStar += review.starRate;
       }
@@ -156,9 +170,9 @@ export async function storiesSeeding() {
 
       for (const userId of getMultipleRandom(
         userList,
-        randomInterval(1, userList.length),
+        randomInterval((weight - 1) * userCount, weight * userCount),
       )) {
-        const count = randomInterval(1, 5);
+        const count = randomInterval(1, 3);
         for (let i = 1; i <= count; i++) {
           createVoteUp(userId, res.id);
         }
@@ -167,6 +181,7 @@ export async function storiesSeeding() {
       await getRepository(Story).update(res.id, {
         counters: {
           countBookMark: countBookMark,
+          countReading: countReading,
           countChapter: countChapter,
           countComment: countComment,
           countReview: countReview,

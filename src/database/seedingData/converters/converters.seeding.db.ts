@@ -5,7 +5,7 @@ import { join } from 'path';
 import { randomInterval, randomText } from '../RandomText';
 
 export async function converterSeeding() {
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 30; i++) {
     if (
       !(await getRepository(Converter).findOne({
         where: { id: i },

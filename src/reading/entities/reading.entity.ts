@@ -10,30 +10,33 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class VoteUp {
+export class Reading {
   @PrimaryGeneratedColumn()
   id: string;
+
+  @Column()
+  lastChap: number;
 
   @CreateDateColumn()
   createdAt: Date;
 
-  @RelationId((voteUp: VoteUp) => voteUp.story)
+  @RelationId((reading: Reading) => reading.story)
   @Column({ nullable: true })
   storyId: string;
 
   @ManyToOne(
     () => Story,
-    (story: Story) => story.voteUps,
+    (story: Story) => story.bookMarks,
   )
   story: Story;
 
-  @RelationId((voteUp: VoteUp) => voteUp.user)
+  @RelationId((reading: Reading) => reading.user)
   @Column({ nullable: true })
   userId: string;
 
   @ManyToOne(
     () => User,
-    (user: User) => user.voteUps,
+    (user: User) => user.bookMarks,
   )
   user: User;
 }

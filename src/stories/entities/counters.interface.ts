@@ -4,6 +4,7 @@ export interface Counters {
   countView: number;
   countText: number;
   countBookMark: number;
+  countReading: number;
   countVoteUp: number;
   countReview: number;
   countComment: number;

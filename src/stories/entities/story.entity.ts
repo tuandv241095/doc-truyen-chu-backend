@@ -5,6 +5,7 @@ import { Chapter } from 'src/chapters/entities/chapter.entity';
 import { Comment } from 'src/comments/entities/comment.entity';
 import { Converter } from 'src/converter/entities/converter.entity';
 import { Personality } from 'src/personality/entities/personality.entity';
+import { Reading } from 'src/reading/entities/reading.entity';
 import { Review } from 'src/reviews/entities/review.entity';
 import { Sex } from 'src/sex/entities/sex.entity';
 import { StoryStatus } from 'src/story-status/entities/story-status.entity';
@@ -71,6 +72,12 @@ export class Story {
   )
   bookMarks: BookMark[];
 
+  @OneToMany(
+    () => Reading,
+    (reading: Reading) => reading.story,
+  )
+  readings: Reading[];
+
   @ManyToMany(
     () => Category,
     (category: Category) => category.stories,
@@ -88,6 +95,7 @@ export class Story {
   status: StoryStatus;
 
   @RelationId((story: Story) => story.status)
+  @Column({ nullable: true })
   statusId: string;
 
   @ManyToMany(
@@ -117,6 +125,7 @@ export class Story {
   sex: Sex;
 
   @RelationId((story: Story) => story.sex)
+  @Column({ nullable: true })
   sexId: string;
 
   @ManyToOne(
@@ -126,6 +135,7 @@ export class Story {
   style: Style;
 
   @RelationId((story: Story) => story.style)
+  @Column({ nullable: true })
   styleId: string;
 
   @OneToMany(
@@ -160,4 +170,7 @@ export class Story {
     (voteUp: VoteUp) => voteUp.story,
   )
   voteUps: VoteUp[];
+
+  @RelationId((story: Story) => story.voteUps)
+  voteUpIds: string[];
 }

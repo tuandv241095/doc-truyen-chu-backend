@@ -24,7 +24,7 @@ export class Comment {
   level: number;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @Column({
     type: 'jsonb',

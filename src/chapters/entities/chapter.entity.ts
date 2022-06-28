@@ -2,6 +2,7 @@ import { CounterView } from 'src/counterView/entities/counterView.entity';
 import { Story } from 'src/stories/entities/story.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
@@ -13,6 +14,9 @@ import {
 export class Chapter {
   @PrimaryGeneratedColumn()
   id: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
 
   @Column()
   number: number;

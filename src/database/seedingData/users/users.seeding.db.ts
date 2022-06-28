@@ -7,7 +7,7 @@ import { join } from 'path';
 import { randomInterval, randomText } from '../RandomText';
 
 export async function usersSeeding() {
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 50; i++) {
     if (
       !(await getRepository(User).findOne({
         where: { usernameOrEmail: 'accounttest' + i.toString() },

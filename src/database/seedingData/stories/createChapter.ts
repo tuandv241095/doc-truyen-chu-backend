@@ -14,8 +14,8 @@ export const createChapter = async (
       where: { number: chapNumber, storyId: storyId },
     }))
   ) {
-    let content: '';
-    for (let i = 0; i < 2; i++) {
+    let content: string = '';
+    for (let i = 0; i < 20; i++) {
       content += randomText(1, randomInterval(15, 50), false) + '.\\n';
     }
     const chapter = {
@@ -28,7 +28,10 @@ export const createChapter = async (
 
     const chapterEntity = getRepository(Chapter).create(chapter);
     const res = await getRepository(Chapter).save(chapterEntity);
-    for (const userId of getMultipleRandom(userList, randomInterval(1, 10))) {
+    for (const userId of getMultipleRandom(
+      userList,
+      randomInterval(1, Math.floor(userList.length / 2)),
+    )) {
       createCounterView(res.id, userId);
     }
     return res;
