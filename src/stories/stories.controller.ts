@@ -35,6 +35,8 @@ export class StoriesController {
       q.personalities,
       q.sex,
       q.style,
+      q.author,
+      q.converter,
     );
   }
 

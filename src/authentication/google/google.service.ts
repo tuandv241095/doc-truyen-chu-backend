@@ -72,7 +72,10 @@ export class GoogleService {
     if (user.type !== RegisteredType.Google) {
       throw new UnauthorizedException();
     }
-    console.log('here');
+    delete user.password;
+    delete user.salt;
+    delete user.currentHashedRefreshToken;
+    delete user.totalCounter;
 
     const token = this.authenticationService.getTokens(user.id);
 

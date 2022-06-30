@@ -32,6 +32,10 @@ export class AuthenticationController {
   @Post('register')
   async register(@Body() registrationData: RegisterDto) {
     const user = await this.authenticationService.register(registrationData);
+    delete user.password;
+    delete user.salt;
+    delete user.currentHashedRefreshToken;
+    delete user.totalCounter;
     return user;
   }
 
@@ -46,6 +50,10 @@ export class AuthenticationController {
   @Post('login')
   async logIn(@Req() request: RequestWithUser) {
     const { user } = request;
+    delete user.password;
+    delete user.salt;
+    delete user.currentHashedRefreshToken;
+    delete user.totalCounter;
     const loginRes = await this.authenticationService.logIn(user.id);
 
     return {

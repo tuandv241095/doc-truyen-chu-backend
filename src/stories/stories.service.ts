@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { OrderByCondition, Repository } from 'typeorm';
+import { In, Like, OrderByCondition, Repository } from 'typeorm';
 import { CreateStoryDto } from './dto/create-story.dto';
 import { SortBy } from './dto/sortBy.enum';
 import { Story } from './entities/story.entity';
@@ -26,98 +26,122 @@ export class StoriesService {
     personalities?: string,
     sex?: string,
     style?: string,
+    author?: string,
+    converter?: string,
   ) {
-    let order: OrderByCondition = {};
+    let order = {};
+    let where: { [type: string]: any } = {};
+
+    if (categories)
+      where.categories = {
+        id: In(categories.split('%')),
+      };
+    if (status)
+      where.status = {
+        id: status,
+      };
+    if (worldViews)
+      where.worldViews = {
+        id: In(worldViews.split('%')),
+      };
+    if (personalities)
+      where.worldViews = {
+        id: In(personalities.split('%')),
+      };
+    if (sex)
+      where.sex = {
+        id: sex,
+      };
+    if (style)
+      where.style = {
+        id: style,
+      };
+    if (author)
+      where.author = {
+        id: author,
+      };
+    if (converter)
+      where.converter = {
+        id: converter,
+      };
+    if (keyword) where.name = Like(`%${keyword}%`);
+
     if (sortBy) {
       switch (sortBy) {
         case SortBy.CountBookMark:
           order = {
-            "counters->'countBookMark'": 'DESC',
+            countBookMark: 'DESC',
           };
           break;
         case SortBy.CountChapter:
           order = {
-            "counters->'countChapter'": 'DESC',
+            countChapter: 'DESC',
           };
           break;
         case SortBy.CountComment:
           order = {
-            "counters->'countComment'": 'DESC',
+            countComment: 'DESC',
           };
           break;
         case SortBy.CountReview:
           order = {
-            "counters->'countReview'": 'DESC',
+            countReview: 'DESC',
           };
           break;
         case SortBy.CountText:
           order = {
-            "counters->'countText'": 'DESC',
+            countText: 'DESC',
           };
           break;
         case SortBy.Trending:
           order = {
-            "counters->'countReading'": 'DESC',
+            countReading: 'DESC',
           };
           break;
         case SortBy.View:
           order = {
-            "counters->'countView'": 'DESC',
+            countView: 'DESC',
           };
           break;
         case SortBy.StarRate:
           order = {
-            "counters->'starRate'": 'DESC',
+            starRate: 'DESC',
+          };
+          break;
+        case SortBy.VoteUp:
+          order = {
+            countVoteUp: 'DESC',
           };
           break;
       }
     }
-    const query = this.storyRepository.createQueryBuilder('stories');
-    if (categories) {
-      query
-        .leftJoin('stories.categories', 'category')
-        .andWhere('category.id IN(:...categories)', {
-          categories: categories.split('%'),
-        });
-    }
-    if (status) {
-      query
-        .leftJoin('stories.status', 'status')
-        .andWhere('status.id = :status', {
-          status: status,
-        });
-    }
-    if (worldViews) {
-      query
-        .leftJoin('stories.worldViews', 'worldView')
-        .andWhere('worldView.id IN(:...worldViews)', {
-          worldViews: worldViews.split('%'),
-        });
-    }
-    if (personalities) {
-      query
-        .leftJoin('stories.personalities', 'personality')
-        .andWhere('personality.id IN(:...personalities)', {
-          personalities: personalities.split('%'),
-        });
-    }
-    if (sex) {
-      query.leftJoin('stories.sex', 'sex').andWhere('sex.id = :sex', {
-        sex: sex,
-      });
-    }
-    if (style) {
-      query.leftJoin('stories.style', 'style').andWhere('style.id = :style', {
-        style: style,
-      });
-    }
 
-    const res = await query
-      .orderBy(order)
-      .skip(offset)
-      .limit(limit)
-      .getMany();
-    return res;
+    const count = await this.storyRepository.find({
+      where,
+      cache: true,
+    });
+
+    const stories = await this.storyRepository.find({
+      relations: {
+        categories: true,
+        author: true,
+      },
+      where,
+      order: {
+        counters: {
+          countBookMark: order,
+        },
+        id: 'ASC',
+      },
+      skip: offset,
+      take: limit,
+      cache: true,
+    });
+
+    return {
+      stories,
+      count,
+    };
   }
 
   findOne(id: number) {

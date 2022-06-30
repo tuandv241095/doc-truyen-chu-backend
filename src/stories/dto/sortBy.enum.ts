@@ -1,7 +1,7 @@
 export enum SortBy {
   Trending = 'trending',
-  View = 'view',
-  VoreUp = 'voteUp',
+  View = 'countView',
+  VoteUp = 'countVoteUp',
   StarRate = 'starRate',
   CountReview = 'countReview',
   CountComment = 'countComment',

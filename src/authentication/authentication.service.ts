@@ -61,8 +61,12 @@ export class AuthenticationService {
 
   public async getAuthenticatedUser(email: string, plainTextPassword: string) {
     try {
+      console.log(email, plainTextPassword);
       const user = await this.usersService.getByEmail(email);
+
       await this.verifyPassword(plainTextPassword, user.password);
+      console.log(user);
+
       return user;
     } catch (error) {
       throw new HttpException(
@@ -94,6 +98,8 @@ export class AuthenticationService {
       plainTextPassword,
       hashedPassword,
     );
+    console.log(isPasswordMatching);
+
     if (!isPasswordMatching) {
       throw new HttpException(
         'Wrong credentials provided',

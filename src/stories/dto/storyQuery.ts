@@ -11,4 +11,6 @@ export class StoryQuery {
   personalities?: string;
   sex?: string;
   style?: string;
+  author?: string;
+  converter?: string;
 }

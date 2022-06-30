@@ -7,6 +7,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   RelationId,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -16,6 +17,9 @@ export class BookMark {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @RelationId((bookMark: BookMark) => bookMark.story)
   @Column({ nullable: true })

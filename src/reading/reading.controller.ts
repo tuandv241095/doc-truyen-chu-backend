@@ -1,9 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { ReadingService } from './reading.service';
 import { CreateReadingDto } from './dto/create-reading.dto';
 import { UpdateReadingDto } from './dto/update-reading.dto';
+import { ReadingQuery } from './dto/readingQuery';
 
-@Controller('reading')
+@Controller('readings')
 export class ReadingController {
   constructor(private readonly readingService: ReadingService) {}
 
@@ -13,8 +23,8 @@ export class ReadingController {
   }
 
   @Get()
-  findAll() {
-    return this.readingService.findAll();
+  async findAll(@Query() q: ReadingQuery) {
+    return await this.readingService.findAll(q.limit, q.offset, q.userId);
   }
 
   @Get(':id')

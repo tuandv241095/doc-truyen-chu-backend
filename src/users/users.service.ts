@@ -17,7 +17,9 @@ export class UsersService {
   ) {}
 
   async getByEmail(usernameOrEmail: string) {
-    const user = await this.userRepository.findOne({ usernameOrEmail });
+    const user = await this.userRepository.findOneBy({
+      usernameOrEmail,
+    });
     if (user) {
       return user;
     }
@@ -34,7 +36,7 @@ export class UsersService {
   }
 
   async getById(id: string) {
-    const user = await this.userRepository.findOne({ id });
+    const user = await this.userRepository.findOneBy({ id });
     if (user) {
       return user;
     }
@@ -58,7 +60,7 @@ export class UsersService {
   }
 
   async checkUsernameOrEmail(usernameOrEmail: string) {
-    return await this.userRepository.findOne({ usernameOrEmail });
+    return await this.userRepository.findOneBy({ usernameOrEmail });
   }
 
   async createWithSSO(userData: CreateUserWithSSODto, type: RegisteredType) {
@@ -86,7 +88,7 @@ export class UsersService {
   }
 
   async getUserIfRefreshTokenMatches(refreshToken: string, userId: string) {
-    const user = await this.userRepository.findOne(userId);
+    const user = await this.userRepository.findOneBy({ id: userId });
     const isRefreshTokenMatching = await bcrypt.compare(
       refreshToken,
       user.currentHashedRefreshToken,

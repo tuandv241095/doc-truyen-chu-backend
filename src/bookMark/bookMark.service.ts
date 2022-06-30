@@ -1,15 +1,43 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateBookMarkDto } from './dto/createBookMark.dto';
 import { UpdateBookMarkDto } from './dto/updateBookMark.dto';
+import { BookMark } from './entities/bookMark.entity';
 
 @Injectable()
 export class BookMarkService {
+  constructor(
+    @InjectRepository(BookMark)
+    private bookMarkRepository: Repository<BookMark>,
+  ) {}
+
   create(createBookMarkDto: CreateBookMarkDto) {
     return 'This action adds a new bookMark';
   }
 
-  findAll() {
-    return `This action returns all bookMark`;
+  async findAll(limit?: number, offset?: number, userId?: string) {
+    const count = await this.bookMarkRepository.count({
+      where: {
+        userId: userId,
+      },
+    });
+    const bookMarks = await this.bookMarkRepository.find({
+      where: {
+        userId: userId,
+      },
+      relations: {
+        story: true,
+      },
+      skip: offset,
+      take: limit,
+      cache: true,
+    });
+
+    return {
+      bookMarks,
+      count,
+    };
   }
 
   findOne(id: number) {

@@ -17,6 +17,11 @@ export class FacebookService {
       RegisteredType.Facebook,
     );
 
+    delete user.password;
+    delete user.salt;
+    delete user.currentHashedRefreshToken;
+    delete user.totalCounter;
+
     const token = await this.authenticationService.getTokens(user.id);
     return {
       ...token,
